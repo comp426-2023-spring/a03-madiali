@@ -20,7 +20,7 @@ if (argv.r !== undefined || argv.rules !== undefined) {
 
 // Play game
 try {
-    result = rps((argv._)[0])
+    const result = rps((argv._)[0])
     console.log(result)
     process.exit(0)
 } catch (e) {

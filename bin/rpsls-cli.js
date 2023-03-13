@@ -6,28 +6,22 @@ import { rpsls } from '../lib/rpsls.js'
 // Process CLI arguments
 var argv = minimist(process.argv.slice(2))
 
-// Check for out-of-range error
-if ((argv._).length > 1) {
-    console.error('out-of-range error')
-    printHelpMessage()
-    printRulesMessage()
-    process.exit(-1)
-}
-
 // Help message
 if (argv.h !== undefined || argv.help !== undefined) {
     printHelpMessage()
+    process.exit(0)
 }
 
 // Rules message
 if (argv.r !== undefined || argv.rules !== undefined) {
     printRulesMessage()
+    process.exit(0)
 }
 
 // Play game
 try {
-    result = rpsls((argv._)[0])
-    console.log(result)
+    let result = rpsls((argv._)[0])
+    console.log(JSON.stringify(result))
     process.exit(0)
 } catch (e) {
     printHelpMessage()
