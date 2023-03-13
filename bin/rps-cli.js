@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { rps } from 'node-rpsls'
 import minimist from 'minimist'
+import { rps } from '../lib/rpsls.js'
 
 // Process CLI arguments
 var argv = minimist(process.argv.slice(2))
@@ -25,7 +25,7 @@ if (argv.r !== undefined || argv.rules !== undefined) {
 }
 
 // Play game
-rps((argv._)[0])
+console.log(rps((argv._)[0]))
 
 
 // Helper functions
