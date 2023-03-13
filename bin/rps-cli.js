@@ -20,8 +20,8 @@ if (argv.r !== undefined || argv.rules !== undefined) {
 
 // Play game
 try {
-    const result = rps((argv._)[0])
-    console.log(result)
+    let result = rps((argv._)[0])
+    console.log(JSON.stringify(result))
     process.exit(0)
 } catch (e) {
     printHelpMessage()
