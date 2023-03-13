@@ -25,7 +25,15 @@ if (argv.r !== undefined || argv.rules !== undefined) {
 }
 
 // Play game
-console.log(rpsls((argv._)[0]))
+try {
+    result = rpsls((argv._)[0])
+    console.log(result)
+    process.exit(0)
+} catch (e) {
+    printHelpMessage()
+    printRulesMessage()
+    process.exit(1)
+}
 
 
 // Helper functions
