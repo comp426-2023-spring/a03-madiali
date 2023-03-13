@@ -1,23 +1,34 @@
 #!/usr/bin/env node
 
+import { rps } from 'node-rpsls'
 import minimist from 'minimist'
 // https://www.npmjs.com/package/minimist
 
-const validShots = ['rock', 'paper', 'scissors']
+// Process CLI arguments
+var argv = minimist(process.argv.slice(2))
 
-export function rps(playerShot) {
-    if (playerShot !== undefined) {
-        playerShot = playerShot.toLowerCase()
-    }
+// Help message
+if (argv.h !== undefined || argv.help !== undefined) {
+    console.log(`Usage: node-rps [SHOT]
+    Play Rock Paper Scissors (RPS)
     
+      -h, --help      display this help message and exit
+      -r, --rules     display the rules and exit
+    
+    Examples:
+      node-rps        Return JSON with single player RPS result.
+                      e.g. {"player":"rock"}
+      node-rps rock   Return JSON with results for RPS played against a simulated opponent.
+                      e.g {"player":"rock","opponent":"scissors","result":"win"}`)
+    process.exit(0)
+}
 
-    if (playerShot === undefined) {
-        return JSON.stringify({'player': opponentShot})
-    } else if (!validShots.includes(playerShot)) {
-        // TODO
-    } else {
-        // TODO
-        result = undefined
-        return JSON.stringify({'player': playerShot, 'opponent': opponentShot, 'result': result})
-    }
+// Rules message
+if (argv.r !== undefined || argv.rules !== undefined) {
+    console.log(`Rules for Rock Paper Scissors:
+
+    - Scissors CUTS Paper
+    - Paper COVERS Rock
+    - Rock CRUSHES Scissors`)
+    process.exit(0)
 }
